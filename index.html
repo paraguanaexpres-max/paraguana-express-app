@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Paraguana Express Tracking</title>
+</head>
+<body style="font-family: Arial; text-align: center; padding: 40px;">
+
+  <h1>Paraguana Express</h1>
+  <p>Consulta tu paquete</p>
+
+  <input id="tracking" placeholder="Ej: PX-26001" style="padding:10px; width:200px;" />
+  <button onclick="buscar()">Buscar</button>
+
+  <p id="resultado"></p>
+
+  <script>
+    async function buscar() {
+      const code = document.getElementById('tracking').value;
+
+      const res = await fetch("https://kiixujxrpogovchxxmry.supabase.co/rest/v1/public_tracking?tracking_code=eq." + code, {
+        headers: {
+          "apikey": "sb_publishable_dy9JAB4CLLut7v8ffxcQ0Q_zzL0AtNC",
+          "Authorization": "Bearer sb_publishable_dy9JAB4CLLut7v8ffxcQ0Q_zzL0AtNC"
+        }
+      });
+
+      const data = await res.json();
+
+      if (data.length === 0) {
+        document.getElementById('resultado').innerText = "No encontrado";
+      } else {
+        document.getElementById('resultado').innerText = "Estado: " + data[0].current_status;
+      }
+    }
+  </script>
+
+</body>
+</html>
