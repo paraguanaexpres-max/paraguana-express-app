@@ -32,13 +32,19 @@
         const estado = data[0].current_status;
 let color = "#3b82f6"; // azul por defecto
 
-if (estado.toLowerCase().includes("entregado")) {
+const estadoLower = estado.toLowerCase();
+
+if (estadoLower.includes("entregado")) {
   color = "#22c55e"; // verde
-} else if (estado.toLowerCase().includes("transito")) {
+} else if (estadoLower.includes("transito") || estadoLower.includes("tránsito")) {
   color = "#eab308"; // amarillo
-} else if (estado.toLowerCase().includes("recibido")) {
+} else if (estadoLower.includes("recibido")) {
   color = "#3b82f6"; // azul
-} else if (estado.toLowerCase().includes("problema")) {
+} else if (estadoLower.includes("aduana")) {
+  color = "#a855f7"; // morado (extra pro)
+} else if (estadoLower.includes("reparto")) {
+  color = "#f97316"; // naranja
+} else if (estadoLower.includes("problema")) {
   color = "#ef4444"; // rojo
 }
 
@@ -64,3 +70,5 @@ document.getElementById('resultado').innerHTML = `
     </span>
   </div>
 `;
+ }
+ }
