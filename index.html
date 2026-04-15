@@ -29,10 +29,38 @@
       if (data.length === 0) {
         document.getElementById('resultado').innerText = "No encontrado";
       } else {
-        document.getElementById('resultado').innerText = "Estado: " + data[0].current_status;
-      }
-    }
-  </script>
+        const estado = data[0].current_status;
+let color = "#3b82f6"; // azul por defecto
 
-</body>
-</html>
+if (estado.toLowerCase().includes("entregado")) {
+  color = "#22c55e"; // verde
+} else if (estado.toLowerCase().includes("transito")) {
+  color = "#eab308"; // amarillo
+} else if (estado.toLowerCase().includes("recibido")) {
+  color = "#3b82f6"; // azul
+} else if (estado.toLowerCase().includes("problema")) {
+  color = "#ef4444"; // rojo
+}
+
+document.getElementById('resultado').innerHTML = `
+  <div style="
+    margin-top:20px;
+    padding:15px;
+    border-radius:12px;
+    background:#f9fafb;
+    border:1px solid #e5e7eb;
+  ">
+    <strong>Código:</strong> ${data[0].tracking_code}<br/>
+    <strong>Estado:</strong> 
+    <span style="
+      background:${color};
+      color:white;
+      padding:5px 10px;
+      border-radius:999px;
+      font-weight:bold;
+      margin-left:5px;
+    ">
+      ${estado}
+    </span>
+  </div>
+`;
