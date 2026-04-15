@@ -20,7 +20,21 @@
   <p style="color:#E5C76B;">Consulta tu paquete</p>
 
   <input id="tracking" placeholder="Ej: PX-280414" style="padding:10px; width:220px; border-radius:8px; border:1px solid #ccc;" />
-  <button onclick="buscar()" style="padding:10px 18px; border:none; border-radius:8px; background:#0F172A; color:white; cursor:pointer;">Buscar</button>
+  <button onclick="buscar()" style="
+  padding:10px 20px;
+  border:none;
+  border-radius:8px;
+  background:#D4AF37;
+  color:#0B1D3A;
+  font-weight:bold;
+  cursor:pointer;
+  transition: all 0.3s ease;
+"
+onmouseover="this.style.transform='scale(1.05)'; this.style.background='#FFD700';"
+onmouseout="this.style.transform='scale(1)'; this.style.background='#D4AF37';"
+>
+  Buscar
+</button>
 
   <div id="resultado" style="margin-top:20px;"></div>
 
