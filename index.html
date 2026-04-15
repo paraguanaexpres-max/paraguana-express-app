@@ -15,8 +15,7 @@
 
   <script>
     async function buscar() {
-      const code = document.getElementById('tracking').value;
-
+   const code = document.getElementById('tracking').value.toUpperCase();
       const res = await fetch("https://kiixujxrpogovchxxmry.supabase.co/rest/v1/public_tracking?tracking_code=eq." + code, {
         headers: {
           "apikey": "sb_publishable_dy9JAB4CLLut7v8ffxcQ0Q_zzL0AtNC",
